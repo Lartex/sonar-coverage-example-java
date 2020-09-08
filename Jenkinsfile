@@ -18,7 +18,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'mvn install'
+                sh 'mvn install'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
                 withSonarQubeEnv('sonar') {
                     script {
                         def scannerHome = tool 'sonarqube-scanner'
-                        bat "${scannerHome}/bin/sonar-scanner"
+                        sh "${scannerHome}/bin/sonar-scanner"
                     }
                 }
             }
